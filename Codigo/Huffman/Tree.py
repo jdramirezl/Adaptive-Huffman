@@ -28,7 +28,6 @@ class Tree:
         self.by_id[213] = self.root
     
     def update(self, index):
-        #print("Updating", index)
         if index == 213:
             self.root.weight += 1
         else:
@@ -45,24 +44,13 @@ class Tree:
                 curr = curr.parent.right
                 sibling = curr.parent.left
             
-            #print('before dad!', '\n',curr.parent.left, '\n',curr.parent.right)
+
             self.by_id[index] = curr
-            #print("weights", curr.weight, sibling.weight)
-            #print("ids", curr.id, sibling.id)
+
             if curr.weight > sibling.weight and not dir:
-                #print("are we even here?")
                 self.swap(curr)
-            #print('after dad!', curr.parent.left.id, curr.parent.right.id)
             
             self.update(curr.parent.id)
-    
-    def direction(self, node):
-        if node.id == node.parent.left.id:
-            return 0
-        return 1
-    
-    def swap(self, node):
-        node.parent.left, node.parent.right = node.parent.right, node.parent.left
     
     def add(self, symbol):
         print("Adding", symbol)
@@ -71,8 +59,6 @@ class Tree:
             
             # Get old NYT
             node = self.by_id[self.NYT]
-            
-            #print("Old NYT","type", type(node))
             
             # Create new NYT
             new_left = External("NYT", 0, self.NYT - 2)
@@ -116,17 +102,29 @@ class Tree:
         print(target)
         
         self.update(target)
+    
+    def direction(self, node):
+        if node.id == node.parent.left.id:
+            return 0
+        return 1
+    
+    def swap(self, node):
+        node.parent.left, node.parent.right = node.parent.right, node.parent.left
+    
+    def printTree(self):
+        self.printTreeAux(self.root)
+    
+    def printTreeAux(self, node, level=0, l = '-'):
+        if node != None:
+            if type(node) == Internal:
+                self.printTreeAux(node.right, level + 1, '1')
+                print('-' * 4 * level + '-> ', l, '[', node.weight, node.id, ']')
+                self.printTreeAux(node.left, level + 1, '0')
+            else:
+                print('-' * 4 * level + '-> ', l,'[', node.symbol, node.weight, node.id, ']')
 
 
-def printTree(node, level=0, l = '-'):
-    if node != None:
-        if type(node) == Internal:
-            printTree(node.right, level + 1, '1')
-            print('-' * 4 * level + '-> ', l, '[', node.weight, node.id, ']')
-            printTree(node.left, level + 1, '0')
-        else:
-            print('-' * 4 * level + '-> ', l,'[', node.symbol, node.weight, node.id, ']')
-        
+
 
 def main():
     tree = Tree()
@@ -134,8 +132,8 @@ def main():
     #string = "aabbbcccc"
     
     for symbol in string:
-        printTree(tree.root)
+        tree.printTree()
         tree.add(symbol)
-    printTree(tree.root)
+    tree.printTree()
 
 main()
