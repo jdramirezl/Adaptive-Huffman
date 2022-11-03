@@ -25,9 +25,11 @@ def main():
     
     if res:
         file = open(f'{string}_compressed.txt','w') 
-        file.write(res + '\n')
+        print(res)
+        file.write(res)
+        file.flush()
     
-    input("Press any key to continue...")
+    input("Press enter to continue...")
 
 
 if __name__ == '__main__':

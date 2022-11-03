@@ -57,11 +57,3 @@ class Huffman:
 
         self.tree.printInorder()
         return result
-
-    # def decode(self, text):
-    #     i = self.E
-    #     while i <= len(text):
-    #         part = text[i - self.E:i]
-            
-            
-    #         i += self.E
