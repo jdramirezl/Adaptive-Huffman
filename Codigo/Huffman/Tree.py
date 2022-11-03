@@ -57,7 +57,7 @@ class Tree:
             
             # Create new NYT
             
-            new_left = External("NYT", 0, 0, node.height + 1)
+            new_left = External("NYT", "", 107, node.height + 1)
             
             # Add NYT to lookup
             self.by_sym["NYT"] = new_left
@@ -150,14 +150,27 @@ class Tree:
             else:
                 print('-' * 4 * level + '-> ', l,'[', node.symbol, node.weight, node.id, ']')
 
+    def printInorder(self):
+        self.printInorderAux(self.root)
+    
+    def printInorderAux(self, node):
+        if type(node) == Internal:
+            self.printInorderAux(node.left)
+            print(f"[,{node.weight},]")
+            self.printInorderAux(node.right)
+        else:
+            print(f"[{node.symbol},{node.weight},{node.id}]")
+
+
 def main():
     tree = Tree()
     #string = "aardvark"
-    string = "abcccc"
+    string = "abccde"
     
     for symbol in string:
         tree.printTree()
         tree.add(symbol)
     tree.printTree()
+    tree.printInorder()
 
 main()
