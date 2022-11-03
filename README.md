@@ -22,6 +22,9 @@
 2. Dar doble click en el archivo
 3. Ingresar el texto a comprimir
 
+## Ejemplo de arbol generado por el algoritmo
+![arbol](https://user-images.githubusercontent.com/65835577/199849395-b7e523b3-153e-4086-80b6-2e395baface6.gif)
+
 ## Tecnologias usadas
 
 - Python
@@ -45,3 +48,5 @@ Para el simbolo A_k lo guardamos en binario asi:
   - k - 1 in e + 1 bits
 - if k > 2r:
   - k - r - 1 in e bits
+
+
