@@ -3,7 +3,6 @@ def encode(input_string):
     # create tree
     # pass string to tree
 
-
 def main():
     user_input = input()
     
