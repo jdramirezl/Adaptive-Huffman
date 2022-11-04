@@ -19,7 +19,7 @@ def main():
     string = input("Enter the string to be compressed: ")
     # string = "Hola mundo"
     #string = "aardvark"  # aardvark"
-    #string = "abccde"
+    #string = "abccb"
     #string = ' !"#$%&\'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstuvwxyz{|}~'+chr(127)+'ÁÉÍÑÓÚáéíñóú'
     res = encode(string)
     

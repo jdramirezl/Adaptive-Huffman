@@ -26,10 +26,13 @@ class Tree:
                     self.blocks[curr.weight] = set()
                 self.blocks[curr.weight].add(index)
 
+                self.blocks[curr.weight - 1].remove(index)
                 biggest = min(self.blocks[curr.weight - 1], key=lambda x: self.by_id[x].height, default=None)
 
-                self.blocks[curr.weight - 1].remove(index)
                 
+                print("biggest", biggest, "curr", curr.id)
+                if biggest:
+                    print("biggest height", self.by_id[biggest].height, "curr height", curr.height)
                 if biggest and self.by_id[biggest].height < curr.height:
                     self.swap(self.by_id[index].parent, self.by_id[biggest])
 
@@ -61,7 +64,7 @@ class Tree:
 
             # Create new NYT
 
-            new_left = External("NYT", self.counter - 2, "", node.height + 1)
+            new_left = External("NYT", self.counter - 2, 0, node.height + 1)
 
             # Add NYT to lookup
             self.by_sym["NYT"] = new_left
@@ -126,7 +129,7 @@ class Tree:
 
         # swap heights
         self.propagate_height(n1, n2.height)
-        self.propagate_height(n2, n1.height)
+        self.propagate_height(n2, n1.height + 1)
 
     def propagate_height(self, node, height):
         if not node:
@@ -139,7 +142,35 @@ class Tree:
 
         self.propagate_height(node.left, height + 1)
         self.propagate_height(node.right, height + 1)
+        
+        self.propagate_quantity(self.root)
 
+    def propagate_quantity(self, node):
+        if type(node) == External:
+            return node.weight
+        
+        l, r = self.propagate_quantity(node.left), self.propagate_quantity(node.right)
+        
+        
+        
+        node.weight = l + r
+        
+        return node.weight
+        
+    
+    def printTree(self):
+        self.printTreeAux(self.root)
+
+    def printTreeAux(self, node, level=0, l='-'):
+        if node is not None:
+            if type(node) == Internal:
+                self.printTreeAux(node.right, level + 1, '1')
+                print('-' * 4 * level + '-> ', l, '[', node.weight, node.id, ']')
+                self.printTreeAux(node.left, level + 1, '0')
+            else:
+                print('-' * 4 * level + '-> ', l, '[', node.symbol, node.weight, node.id, ']')
+
+    
     def printInorder(self):
         self.__printInorderAux(self.root)
 
