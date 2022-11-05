@@ -48,14 +48,11 @@ class Huffman:
     def encode(self, text):
         result = ""
         for char in text:
-
             if not self.valid(char):
                 print("Símbolo encontrado genera error de compresión")
                 return None
             self.tree.printTree()
-            print("Symbol: " + char)
             result += self.getCode(char)
-        print()
         self.tree.printTree()
         self.tree.printInorder()
         return result

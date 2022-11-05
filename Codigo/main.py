@@ -16,16 +16,16 @@ def encode(input_string):
 
 
 def main():
-    string = input("Enter the string to be compressed: ")
-    # string = "Hola mundo"
+    #string = input("Enter the string to be compressed: ")
+    # string = "Hola nino lindoo"
     #string = "aardvark"  # aardvark"
-    #string = "abccb"
-    #string = ' !"#$%&\'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstuvwxyz{|}~'+chr(127)+'ÁÉÍÑÓÚáéíñóú'
+    string = "abccbb"
+    #string = ' !"#$%&\'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstuvwxyz{|}~'+'ÁÉÍÑÓÚáéíñóú'
     res = encode(string)
     
     if res:
-        file = open(f'{string}_compressed.txt','w') 
-        print(res)
+        file_name = "".join(x for x in string if x.isalnum())
+        file = open(f'{file_name}_compressed.txt','w') 
         file.write(res)
         file.flush()
     
