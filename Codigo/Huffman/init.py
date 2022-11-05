@@ -51,8 +51,9 @@ class Huffman:
             if not self.valid(char):
                 print("Símbolo encontrado genera error de compresión")
                 return None
-            self.tree.printTree()
             result += self.getCode(char)
-        self.tree.printTree()
+        pretty_tree = self.tree.printTree()
+        print()
         self.tree.printInorder()
-        return result
+        print()
+        return result, pretty_tree

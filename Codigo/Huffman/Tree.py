@@ -159,16 +159,18 @@ class Tree:
         return 1  # 1 is right
 
     def printTree(self):
-        self.printTreeAux(self.root)
+        return self.printTreeAux(self.root)
 
-    def printTreeAux(self, node, level=0, l='-'):
+    def printTreeAux(self, node, level=0, l='-', ans=""):
         if node is not None:
             if type(node) == Internal:
-                self.printTreeAux(node.right, level + 1, '1')
-                print('-' * 4 * level + '-> ', l, '[', node.weight, node.id, ']')
-                self.printTreeAux(node.left, level + 1, '0')
+                ans += self.printTreeAux(node.right, level + 1, '1')
+                ans += f"{'-' * 4 * level}-> {l} [, {node.weight}, {node.id}]\n"
+                ans += self.printTreeAux(node.left, level + 1, '0')
             else:
-                print('-' * 4 * level + '-> ', l, '[', node.symbol, node.weight, node.id, ']')
+                ans += f"{'-' * 4 * level}-> {l} [{node.symbol}, {node.weight}, {node.id}]\n"
+        
+        return ans
 
     
     def printInorder(self):

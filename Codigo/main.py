@@ -10,24 +10,26 @@ ALPHABET = [32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43,
 
 def encode(input_string):
     huffman = Huffman(ALPHABET)
-    res = huffman.encode(input_string)
-    
-    return res
+    return huffman.encode(input_string) 
 
+def write_to_file(name, suffix, text):
+    file_name = "".join(x for x in name if x.isalnum())
+    file = open(f'{file_name}{suffix}.txt','w') 
+    
+    for line in text.splitlines():
+        file.write(line)
+        file.write('\n')
+    file.flush()
 
 def main():
-    #string = input("Enter the string to be compressed: ")
-    # string = "Hola nino lindoo"
-    #string = "aardvark"  # aardvark"
-    string = "abccbb"
-    #string = ' !"#$%&\'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstuvwxyz{|}~'+'ÁÉÍÑÓÚáéíñóú'
-    res = encode(string)
+    string = input("Enter the string to be compressed: ")
+    res, printed_tree = encode(string)  # type: ignore
     
     if res:
-        file_name = "".join(x for x in string if x.isalnum())
-        file = open(f'{file_name}_compressed.txt','w') 
-        file.write(res)
-        file.flush()
+        write_to_file(string, "_compressed", res)
+    
+    if res and printed_tree:
+        write_to_file(string, "_tree", printed_tree)
     
     input("Press enter to continue...")
 
