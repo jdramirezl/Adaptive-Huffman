@@ -53,6 +53,12 @@ WINDOWS!!!
 
 ## Formulacion
 
+### Algoritmo usado
+
+* Vitter
+
+### Variables predefinidas
+
 - Tamano del alfabeto:
   - 107
 - Nodos del arbol (Max):
@@ -62,7 +68,7 @@ WINDOWS!!!
   - e = 6, r = 43
   - 107 = (64) + 43
 
-### Criterios de econding
+### Criterios de encoding
 
 Para el simbolo A_k lo guardamos en binario asi:
 
