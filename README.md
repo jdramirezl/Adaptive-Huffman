@@ -6,11 +6,16 @@
 
 - [Adaptive-Huffman](#adaptive-huffman)
   - [Tabla de contenidos](#tabla-de-contenidos)
+  - [Sistema operativo de uso](#sistema-operativo-de-uso)
   - [Informacion general](#informacion-general)
   - [Como usar](#como-usar)
+    - [Consola se cierra muy rapido, no se puede ver el resultado](#consola-se-cierra-muy-rapido-no-se-puede-ver-el-resultado)
+  - [Ejemplo de arbol generado por el algoritmo](#ejemplo-de-arbol-generado-por-el-algoritmo)
   - [Tecnologias usadas](#tecnologias-usadas)
   - [Formulacion](#formulacion)
-    - [Criterios de econding](#criterios-de-econding)
+    - [Algoritmo usado](#algoritmo-usado)
+    - [Variables predefinidas](#variables-predefinidas)
+    - [Criterios de encoding](#criterios-de-encoding)
 
 ## Sistema operativo de uso
 
@@ -30,10 +35,10 @@ WINDOWS!!!
 
 1. Descargar el ejecutable ``compresor.exe``
 2. Dar doble click en el archivo
-3. Ingresar el texto a comprimir
+3. Ingresar el texto a comprimir y presionar enter
+4. Presionar enter para terminar la ejecucion
 
-> ### Consola se cierra muy rapido, no se puede ver el resultado
->
+### Consola se cierra muy rapido, no se puede ver el resultado
 > En caso de que la consola se cierre muy rapido abrir el archivo desde consola asi:
 >
 > 1. Buscar ``CMD`` en el buscador de Windows y dar enter
